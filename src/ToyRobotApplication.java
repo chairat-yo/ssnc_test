@@ -61,7 +61,7 @@ public class ToyRobotApplication {
 		}
 
 		System.out.println("Bye bye....");
-
+		System.exit(1);
 	}
 
 	static class ToyRobot {
