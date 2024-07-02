@@ -35,7 +35,7 @@ public class ToyRobotApplication {
 						robot.moveRight();
 					break;
 				case "WEST":
-					if (robot.getY() > 0)
+					if (robot.getX() > 0)
 						robot.moveLeft();
 					break;
 				}
