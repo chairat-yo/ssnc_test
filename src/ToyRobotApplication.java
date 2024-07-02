@@ -87,19 +87,15 @@ public class ToyRobotApplication {
 		}
 
 		public void turnLeft() {
-			System.out.println("FACING INDEX: " + Arrays.asList(facings).indexOf(facing));
 			int facingIndex = Arrays.asList(facings).indexOf(facing) - 1;
 			facingIndex = facingIndex < 0 ? 3 : facingIndex;
 			this.facing = facings[facingIndex];
-			System.out.println("NEW FACING: " + facing);
 		}
 
 		public void turnRight() {
-			System.out.println("FACING INDEX: " + Arrays.asList(facings).indexOf(facing));
 			int facingIndex = Arrays.asList(facings).indexOf(facing) + 1;
 			facingIndex = facingIndex > 3 ? 0 : facingIndex;
 			this.facing = facings[facingIndex];
-			System.out.println("NEW FACING: " + facing);
 		}
 
 		public int getX() {
