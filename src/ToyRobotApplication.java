@@ -3,20 +3,39 @@ import java.util.Scanner;
 
 public class ToyRobotApplication {
 	public static void main(String[] args) {
+		System.out.println("=====Welcome to Toy Robot Code Challenge!!!!=====");
+		System.out.println("-----Available Commands-----\n1.PLACE X,Y,F\n2.MOVE\n3.LEFT\n4.RIGHT\n5.REPORT");
 		ToyRobot robot = new ToyRobot();
 		int tableSize = 5;
 		Scanner input = new Scanner(System.in);
 		while (true) {
+			System.out.print(">");
 			String command = input.nextLine();
 			String[] commandWithArgs = command.split(" ");
 
-			if (command.startsWith("PLACE")) {
+			//COMMANDS
+			if (command.startsWith("PLACE")) { //PLACE
 				if (commandWithArgs.length > 1) {
 					String commandArgs = commandWithArgs[1];
 					String[] pArgs = commandArgs.split(",");
-					robot.setX(Integer.valueOf(pArgs[0]));
-					robot.setY(Integer.valueOf(pArgs[1]));
-					robot.setFacing(pArgs[2]);
+					int x = Integer.valueOf(pArgs[0]);
+					int y = Integer.valueOf(pArgs[1]);
+					if (x > 5 && y > 5) {
+						System.out.println("Can't place the robot....");
+					}
+					else {
+						robot.setX(x);
+						robot.setY(y);
+					}
+					
+					String facing = pArgs[2];
+					if (robot.isValidFacing(facing)) {
+						robot.setFacing(facing);
+					}
+					else {
+						System.out.println("Invalid Facing....");
+					}
+					
 				}
 			}
 
@@ -66,7 +85,7 @@ public class ToyRobotApplication {
 
 	static class ToyRobot {
 		private int x, y;
-		private String facing;
+		private String facing; //current robot facing
 
 		private String[] facings = { "SOUTH", "WEST", "NORTH", "EAST" };
 
@@ -127,5 +146,14 @@ public class ToyRobotApplication {
 			return "ToyRobot [x=" + x + ", y=" + y + ", facing=" + facing + "]";
 		}
 
+		boolean isValidFacing(String facing) {
+			for (String string : facings) {
+				if (facing.equals(string)) {
+					return true;
+				}
+			}
+			
+			return false;
+		}
 	}
 }
